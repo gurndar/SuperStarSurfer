@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Player.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idel_test",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 38.0
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 375, 273 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 300
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idel_test"
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
