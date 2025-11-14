@@ -15,12 +15,14 @@ animations = [ {
 radius = 38.0
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 375, 273 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 300
+max_speed = 500
+acceleration = 1500
+drag_friction = 300
+scroll_speed = 40
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
