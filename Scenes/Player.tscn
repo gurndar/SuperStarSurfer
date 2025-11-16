@@ -22,7 +22,8 @@ __meta__ = {
 max_speed = 500
 acceleration = 1500
 drag_friction = 300
-scroll_speed = 40
+scroll_speed = 150
+carve_threshold = 450.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

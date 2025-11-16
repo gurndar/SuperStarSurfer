@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/World.gd" type="Script" id=3]
-[ext_resource path="res://ocean.png" type="Texture" id=4]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
@@ -12,6 +11,7 @@ script = ExtResource( 3 )
 light_mask = 3
 position = Vector2( 136, 321 )
 z_index = 30
+scroll_speed = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -21,7 +21,6 @@ smoothing_enabled = true
 position = Vector2( 900, 234 )
 texture = ExtResource( 2 )
 
-[node name="Ocean" type="Sprite" parent="."]
-position = Vector2( 1825.5, 517 )
+[node name="Ocean" type="ParallaxBackground" parent="."]
 scale = Vector2( 3.61816, 1 )
-texture = ExtResource( 4 )
+transform = Transform2D( 3.61816, 0, 0, 1, 0, 0 )
