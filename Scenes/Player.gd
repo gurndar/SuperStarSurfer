@@ -3,7 +3,7 @@ extends KinematicBody2D
 export (int) var max_speed = 350
 export (int) var acceleration = 10000
 export (int) var drag_friction = 500
-export (int) var scroll_speed = 200
+export (PackedScene) var SplashAttackScene
 
 export (float) var carve_threshold = 150.0
 
@@ -22,6 +22,7 @@ func _physics_process(delta):
 	get_move_input(delta)
 	velocity = move_and_slide(velocity)
 	
+	
 func get_move_input(delta):
 	var input_y = 0.0
 	if Input.is_action_pressed("move_down"):
@@ -34,7 +35,6 @@ func get_move_input(delta):
 		velocity.y = move_toward(velocity.y, target_velocity_y, acceleration * delta)
 	else:
 		velocity.y = move_toward(velocity.y, 0, drag_friction * delta)
-	velocity.x = scroll_speed
 func check_for_carve(input_y):
 	# 카빙 조건 정의
 	var input_is_opposite = input_y != 0 and sign(input_y) != sign(velocity.y) and sign(velocity.y) != 0
@@ -52,9 +52,27 @@ func check_for_carve(input_y):
 		# '상태' 리셋: 스위치를 다시 올려서 다음 카빙을 준비합니다.
 		is_carving = false	
 func spawn_splash_attack():
-	print("Yeah!")
+	#rint("Yeah!")
+	if SplashAttackScene == null:
+		print("error: SplashAttackScene is not assinged")
+		return
+	var splash = SplashAttackScene.instance()
 	
-
+	get_parent().add_child(splash)
+	splash.global_position = self.global_position
+	
+	splash.get_node("Timer").start()
+func damaged(taked_damage):
+	print("oh!")
+func checking_for_collision():
+	var collision_count = get_slide_count()
+	
+	if collision_count > 0:
+		for i in range(collision_count):
+			var collision = get_slide_collision(i)
+			if collision.collider.is_in_group("enemy"):
+				damaged(0)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

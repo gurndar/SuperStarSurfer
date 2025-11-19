@@ -1,17 +1,16 @@
-extends Node2D
-
-
+extends Node
+onready var spawner = get_tree().get_root().find_node("EnemySpawner", true, false)
+var game_time = 0.0
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export (int) var scroll_speed = 200
-onready var parallax_bg = $ParallaxBackground
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-func scroll_background(delta):
-	parallax_bg.scroll_offset.x -= scroll_speed * delta
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	scroll_background(delta)
-	pass
+#func _process(delta):
+#	pass
