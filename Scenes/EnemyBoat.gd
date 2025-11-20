@@ -16,8 +16,10 @@ func take_damage(damage_amount):
 	if health <= 0:
 		die()
 func die():
+	var fish = ObjectPool.get_object("Fish")
 	# drop the exp
-	print("eliminated")
+	if fish != null:
+		fish.reset(self.global_position)
 	ObjectPool.return_object(self)
 	
 func reset(spawn_position):
@@ -31,6 +33,7 @@ func reset(spawn_position):
 func _physics_process(delta):
 	velocity.x = -scroll_speed
 	velocity = move_and_slide(velocity)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

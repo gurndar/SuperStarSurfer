@@ -21,6 +21,7 @@ func _ready():
 func _physics_process(delta):
 	get_move_input(delta)
 	velocity = move_and_slide(velocity)
+	checking_for_collision()
 	
 	
 func get_move_input(delta):

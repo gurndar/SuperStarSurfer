@@ -52,7 +52,9 @@ func disable_node(node):
 	# 충돌체(CollisionShape2D)가 있으면 그것도 비활성화
 	if node.has_node("CollisionShape2D"):
 		node.get_node("CollisionShape2D").set_deferred("disabled", true)
-		print("debug yes")
+		print(node.name, "disabled")
+	if node is Area2D:
+		node.monitoring = false
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

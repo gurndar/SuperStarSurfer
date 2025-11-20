@@ -32,6 +32,6 @@ func _on_SplashAttack_body_entered(body):
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 			queue_free()
-	print(body.name)
+	print(body.name, "with splashattack")
 			
 	pass # Replace with function body.
