@@ -54,7 +54,7 @@ func disable_node(node):
 		node.get_node("CollisionShape2D").set_deferred("disabled", true)
 		print(node.name, "disabled")
 	if node is Area2D:
-		node.monitoring = false
+		node.get_node("CollisionShape2D").set_deferred("monitoring", false)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

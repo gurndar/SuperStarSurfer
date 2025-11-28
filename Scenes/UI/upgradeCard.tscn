@@ -1,0 +1,26 @@
+[gd_scene format=2]
+
+[node name="upgradeCard" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1450.0
+margin_bottom = -366.0
+
+[node name="IconRect" type="ColorRect" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 463.0
+margin_bottom = 707.0
+
+[node name="DescriptionLabel" type="Label" parent="."]
+margin_left = 7.0
+margin_top = 350.0
+margin_right = 463.0
+margin_bottom = 364.0
+align = 1
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_left = 7.0
+margin_top = 350.0
+margin_right = 463.0
+margin_bottom = 364.0

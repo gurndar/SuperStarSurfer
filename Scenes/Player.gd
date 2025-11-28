@@ -10,6 +10,10 @@ export (float) var carve_threshold = 150.0
 
 var velocity = Vector2.ZERO
 var is_carving = false
+var HP = 100
+var xp_gage = 100
+var current_xp = 0
+var level = 0
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -66,14 +70,23 @@ func spawn_splash_attack():
 func damaged(taked_damage):
 	print("oh!")
 func checking_for_collision():
+	
 	var collision_count = get_slide_count()
 	
 	if collision_count > 0:
 		for i in range(collision_count):
 			var collision = get_slide_collision(i)
 			if collision.collider.is_in_group("enemy"):
-				damaged(0)
-	
+				damaged(10)
+			ObjectPool.return_object(collision.collider)
+func gain_xp(xp_value):
+	current_xp += xp_value
+	if current_xp >= xp_gage:
+		level_up()
+		xp_gage += (xp_gage * level * 0.1)
+func level_up():
+	level += 1
+	print("level up! current level:", level)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

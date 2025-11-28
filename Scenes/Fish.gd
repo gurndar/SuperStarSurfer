@@ -1,7 +1,7 @@
 extends Area2D
 
 export var scroll_speed = 200
-export var xp_value = 1
+export var xp_value = 10
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -24,13 +24,16 @@ func _on_Fish_body_entered(body):
 	if body.is_in_group("Player"):
 		if body.has_method("gain_xp"):
 			body.gain_xp(xp_value)
-		
 		ObjectPool.return_object(self)
 func reset(spawn_position):
 	self.global_position = spawn_position
 	visible = true
 	set_physics_process(true)
-	$CollisionShape2D.disabled = false
+	self.get_node("CollisionShape2D").set_deferred("disabled", false)
 	monitoring = true
+	pass # Replace with function body.
 
+
+func _on_VisibilityNotifier2D_screen_exited():
+	ObjectPool.return_object(self)
 	pass # Replace with function body.
